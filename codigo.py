@@ -22,13 +22,14 @@ import plotly.express as px
 
 #Carregar base de vendas
 tabela_vendas = pd.read_csv("vendas.csv")
+tabela_vendedores = pd.read_csv("vendedores.csv")
 
 st.write("# Sistema de Vendas")
 
 # Seção de cadastro de vendas
 st.sidebar.write("## Cadastrar Vendas")
 data = st.sidebar.date_input("Data", max_value="today")
-vendedor = st.sidebar.selectbox("Vendedor", ["Ana", "Bruno", "Carla"])
+vendedor = st.sidebar.selectbox("Vendedor", tabela_vendedores["nome"])#["Ana", "Bruno", "Carla"])
 produto = st.sidebar.selectbox("Produto", ["Notebook", "Celular", "Fone"])
 quantidade = st.sidebar.number_input("Quantidade", step=1)
 valor = st.sidebar.number_input("Valor")
